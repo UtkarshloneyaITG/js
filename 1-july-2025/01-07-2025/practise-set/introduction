@@ -1,0 +1,4 @@
+const Myname = "utkarsh";
+let age = 18;
+let Myclass="12th pass";
+console.log(Myname, age, Myclass);

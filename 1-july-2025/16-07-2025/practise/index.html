@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let str = ''
+let sum = 0;
+let num = 0;
+let res = 0;
+while(sum <= 91){
+    num = Math.floor(Math.random()*10)
+    if(num === 0){
+        continue;
+    }
+    sum += num
+    str += num
+    if(sum >91){
+    res =  100-sum;
+    str += res;
+    sum += res;
+    }
+    
+    
+}
+
+
+
+console.log(str, sum)
+    </script>
+</body>
+</html>
+      

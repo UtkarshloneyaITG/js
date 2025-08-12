@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .box {
+    width: 100px;
+    height: 100px;
+    border: 2px solid black;
+  }
+</style>
+
+<body>
+  <label for="red">Red</label>
+  <input type="checkbox" id="red" onclick="changer()">
+  <label for="blue">blue</label>
+  <input type="checkbox" id="blue" onclick="changer()">
+  <label for="green">green</label>
+  <input type="checkbox" id="green" onclick="changer()">
+
+  <div class="box" id="box"></div>
+  <script>
+    let red = document.getElementById('red')
+    let blue = document.getElementById('blue')
+    let green = document.getElementById('green')
+    let box = document.getElementById('box')
+
+    function changer() {
+      let x = 'red';
+      let y = 'blue';
+      let z = 'green';
+      if (red.checked && blue.checked && green.checked) {
+       box.style.backgroundImage = `linear-gradient(${x},${y},${z})`
+      }
+      else if (red.checked && blue.checked && !green.checked) {
+        box.style.backgroundImage = `linear-gradient(${x},${y})`
+      }
+      else if (red.checked && !blue.checked && green.checked) {
+        box.style.backgroundImage = `linear-gradient(${x},${z})`
+      }
+      else if (!red.checked && blue.checked && green.checked) {
+        box.style.backgroundImage = `linear-gradient(${y},${z})`
+      }
+      else if(!red.checked && !blue.checked && green.checked){
+        box.style.backgroundImage = `linear-gradient(${z})`
+      }
+      else if(!red.checked && blue.checked && !green.checked){
+        box.style.backgroundImage = `linear-gradient(${y})`
+      }
+       else if(red.checked && !blue.checked && !green.checked){
+        box.style.backgroundImage = `linear-gradient(${x})`
+      }
+      else {
+        box.style.backgroundImage = `linear-gradient(white)`
+      }
+
+    }
+
+
+  </script>
+</body>
+
+</html>

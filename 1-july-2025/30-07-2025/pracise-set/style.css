@@ -1,0 +1,99 @@
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+}
+
+.first-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 150px;
+  background-color: rgb(1, 183, 255);
+  border-radius: 10px;
+  border: 5px solid darkcyan;
+  border-right:20px ;
+  border-top:20px ;
+  overflow: hidden;
+  transform: skew(15deg);
+  transition: 0.3s;
+  box-shadow: -25px 20px 25px #0005;
+  position: relative;
+}
+.first-div:hover {
+  height: 500px;
+   transform: skew(0);
+}
+.login-sign-up-page {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: gray;
+}
+.active {
+  background: gray;
+  border: 2px solid red;
+}
+
+.con-pass {
+  display: none;
+}
+.sign_up_page-grid {
+  display: grid;
+  grid-template-columns: 1fr ;
+}
+.sign_up--grid-one label,
+.sign_up_page-grid label,
+.login_page label {
+  padding-left: 20px;
+  text-shadow: -5px 5px 10px  black;
+}
+.first-div button {
+  background-color: gray;
+  padding: 13px 25px;
+  border-radius: 100px;
+  border: none;
+  transition: 0.3s;
+}
+.first-div button:hover {
+  background-color: lightgray;
+}
+.first-div input {
+  padding: 10px 15px;
+  border-radius: 100px;
+  outline: none;
+  border: 2px solid black;
+  margin: 10px;
+  display: block;
+  transition: 0.3s;
+}
+.nexa {
+  position: relative;
+}
+.first-div input:hover {
+  transform: scale(1.05);
+}
+.login-sign-up-inputs {
+  position: absolute;
+  bottom: -400px;
+}
+.first-div:hover .login-sign-up-inputs{
+  position: static;
+}
+#logse {
+  font-size: 20px;
+  padding: 40px 20px;
+  text-shadow: -10px 10px 10px black;
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+}
+.img-login-style {
+  width: 400px;
+  height: 300px;
+}

@@ -1,0 +1,6 @@
+let english = 81, hindi = 70, maths = 75, science = 75, sanskrit = 34, sst = 67, gk = 100;
+let total = 600;
+let all_subject_total = english+hindi+gk+sst+science+sanskrit+maths;
+let percentage = all_subject_total/total*100;
+alert(percentage);
+console.log(percentage);

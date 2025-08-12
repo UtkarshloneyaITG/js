@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" id="inpu">
+  <p id = 'para'></p>
+  <button onclick="textChanger()">Click</button>
+  <script>
+    let input = document.getElementById('inpu')
+    let para = document.getElementById('para')
+
+    function textChanger(){
+      para.innerText = input.value
+      input.value = ''
+    }
+  </script>
+</body>
+</html>

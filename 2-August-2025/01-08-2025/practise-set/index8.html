@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <form id="form">
+    <input type="text" name="" id="name">
+    <input type="email" id="email">
+    <button type="submit">Login</button>
+  </form>
+  <script>
+    let formwa = document.getElementById('form')
+    const inputes = document.querySelectorAll("input");
+    formwa.addEventListener('submit', (e) => {
+      e.preventDefault()
+      inputes.forEach((input) => console.log(input.value))
+    })
+  </script>
+</body>
+
+</html>

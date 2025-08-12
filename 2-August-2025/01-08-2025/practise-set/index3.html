@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .nexa {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap:20px;
+  }
+  .small-thum {
+    width:300px;
+    height: 150px;
+  }
+  .big-thumbnal {
+    width: 700px;
+    height: 350px;
+  }
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap:20px
+  }
+</style>
+<body>
+  <div class="container">
+    <div class="big-thumbnal" >
+      <img src="https://static.vecteezy.com/system/resources/thumbnails/036/324/708/small/ai-generated-picture-of-a-tiger-walking-in-the-forest-photo.jpg" alt="" width="100%" height="100%"  id="big-thumbnal">
+    </div>
+    <div class="nexa">
+    <div class="small-thum" onclick="imagechanger(this)">
+      <img src="https://static.vecteezy.com/system/resources/thumbnails/036/324/708/small/ai-generated-picture-of-a-tiger-walking-in-the-forest-photo.jpg" alt="" width="100%" height="100%" class="image-src">
+    </div>
+    <div class="small-thum" onclick="imagechanger(this)">
+      <img src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D" alt="" width="100%" height="100%" class="image-src">
+    </div>
+    <div class="small-thum" onclick="imagechanger(this)">
+      <img src="https://img.freepik.com/free-photo/woman-beach-with-her-baby-enjoying-sunset_52683-144131.jpg?size=626&ext=jpg" alt="" width="100%" height="100%" class="image-src">
+    </div>
+    </div>
+  </div>
+  <script>
+    let image = document.getElementsByClassName('image-src')
+    let bigImage = document.getElementById('big-thumbnal')
+    function imagechanger(hey){
+      let x = 0;
+      for(let y = 0; y<image.length; y++){
+        console.log(image[y])
+        if(image[y].outerHTML == hey.image.outerHTML){
+          x = y
+          console.log('hey')
+        }
+      }
+      
+      bigImage.src = image[x].src
+    }
+  </script>
+</body>
+</html>

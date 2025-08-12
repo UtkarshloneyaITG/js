@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+// 3. Extract names from an array of objects
+ // Ek array jisme objects ho aur har object mein 'name' ho, usme se sirf names ka array banao.
+ // Input: [{ name: 'Alice' }, { name: 'Bob' }] => Output: ['Alice', 'Bob']
+
+ let arr = [{ name: 'Alice' }, { name: 'Bob' }]
+ let nameExtract = arr.map((value)=>{
+  return value.name
+ })
+ console.log(nameExtract)
+  </script>
+</body>
+</html>

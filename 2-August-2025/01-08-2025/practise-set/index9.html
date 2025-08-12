@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .hola {
+    display: flex;
+  }
+  .hola2 {
+    display: flex;
+    flex-direction: column;
+    gap:10px
+  }
+</style>
+<body>
+  <div class="hola">
+  <table border="1px">
+    <tbody>
+      <tr id = 'one'>
+        <td>one</td>
+        <td>two</td>
+        <td>three</td>
+      </tr>
+      <tr id="two">
+        <td>one one</td>
+        <td>two two</td>
+        <td>three three</td>
+      </tr>
+      <tr id="three">
+        <td>one one one </td>
+        <td>two two two</td>
+        <td>three three three</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="hola2">
+    <button onclick="delete1()">Delete</button>
+  <button onclick="delete2()">Delete</button>
+  <button onclick="delete3()">Delete</button>
+  </div>
+  
+</div>
+  <script>
+    let one = document.getElementById('one');
+    let two = document.getElementById('two');
+    let three = document.getElementById('three');
+
+    function delete1(){
+      one.style.display ='none'
+    }
+     function delete2(){
+      two.style.display ='none'
+    }
+     function delete3(){
+      three.style.display ='none'
+    }
+  </script>
+</body>
+</html>

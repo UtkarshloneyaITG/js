@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p id="hola">Why are you here</p>
+  <button onclick="changer()">Changer</button>
+  <script>
+    let hola = document.getElementById('hola');
+    function changer(){
+      if(hola.style.fontSize == '26px'){
+        hola.style.fontSize = '16px';
+        hola.style.fontWeight = '400'
+      }
+      else{
+        hola.style.fontSize = '26px';
+        hola.style.fontWeight = '700'
+      }
+    }
+  </script>
+</body>
+</html>

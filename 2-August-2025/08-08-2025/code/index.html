@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+  <style>
+    body {
+      background-color: lightblue;
+    }
+    body>form{
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  gap:20px;
+}
+body>form>input{
+  padding:10px;
+  border-radius: 100px;
+}
+body>form>button{
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 2px solid black;
+
+}
+.title {
+	color: #5C6AC4;
+}
+  </style>
+    </head>
+  <body>
+  <form id='form'>
+    <label for="name">name</label>
+    <input type="text" name='name' required="" id="name"/>
+    <label for="number" >number</label>
+    <input type="number" name='number' required="" id="number"/>
+    <label for="email">email</label>
+    <input type="email" name='email' required="" id="email"/>
+    <label for="password">password</label>
+    <input type="password" name='password' required="" id="password"/>
+    <button type="submit">Submit</button>
+  </form>
+  <script>
+    let form = document.getElementById('form')
+    let input = document.getElementsByTagName('input')
+    let object = {}
+form.addEventListener('submit',(e)=>{
+  e.preventDefault()
+ 
+  Array.from(input).forEach(element => {
+    object[element.name] = element.value
+    element.value = '';
+  });
+  console.log(object)
+})
+// let objs = {}
+// function objects(obj,key,value){
+//   obj[key] = value
+//     return obj;
+// }
+// let res = objects(objs,'name','tyson')
+// console.log(res)
+
+  </script>
+  </body>
+</html>
+</body>
+
+</html>

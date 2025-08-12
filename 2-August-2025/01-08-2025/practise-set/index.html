@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    button {
+      transition: 0.3s;
+      border: 2px solid black;
+      border-radius: 10px;
+      padding:15px 35px;
+    }
+  </style>
+</head>
+<body>
+
+<button onclick="buttonClicked(0)">Unclicked</button>
+<button onclick="buttonClicked(1)">Unclicked</button>
+<button onclick="buttonClicked(2)">Unclicked</button>
+<button onclick="buttonClicked(3)">Unclicked</button>
+<button onclick="buttonClicked(4)">Unclicked</button>
+  <script>
+    function buttonClicked(x){
+     let button = document.getElementsByTagName('button')
+     if(button[x].style.backgroundColor == 'red'){
+      button[x].style.backgroundColor = 'lightgray'
+      button[x].innerText = 'Unclicked!'
+     }
+     else{
+       button[x].style.backgroundColor = 'red'
+        button[x].innerText = 'clicked!'
+    }
+     }
+     
+  </script>
+</body>
+</html>

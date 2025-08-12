@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  #box {
+    width: 200px;
+    height: 100px;
+    background: gray;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    border-radius: 20px;
+    border: 2px solid black;
+    margin: 30px 60px;
+  }
+
+  #input {
+    margin: 30px;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 20px;
+  }
+
+  button {
+    padding: 13px 36px;
+    border-radius: 10px;
+
+  }
+
+  #continue {
+    display: none;
+  }
+
+  #alerts {
+    color: red;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: fantasy;
+  }
+</style>
+
+<body>
+  <div id="box">
+    <p id="time">00:00</p>
+  </div>
+  <p id="alerts"></p>
+  <div id="normal">
+    <input type="text" id="input">
+    <button onclick="timewaker2()">Ok</button>
+    <button id="continue" onclick="timewaker()">Continue</button>
+  </div>
+  <script>
+    let outerbox = document.getElementById('box')
+    let box = document.getElementById('time')
+    let input = document.getElementById('input')
+    let normal = document.getElementById('normal')
+    let continues = document.getElementById('continue')
+    let alerts = document.getElementById('alerts')
+
+    let seconds = 0;
+    let minutes = 0;
+    let x = 0;
+    let y = 0;
+    let intime = 0
+    function timewaker() {
+      if (Number.isNaN(+input.value)) {
+        alerts.innerText = 'please enter number'
+      }
+      else {
+        intime = input.value;
+        starttime()
+        normal.style.display = 'none'
+        outerbox.style.background = 'green'
+        alerts.innerText = ''
+      }
+      input.value = ''
+
+    }
+    function timewaker2() {
+      if (Number.isNaN(+input.value)) {
+        alerts.innerText = 'please enter number'
+        
+      }
+      else {
+        outerbox.style.background = 'green'
+        alerts.innerText = ''
+        intime = input.value;
+        starttime()
+        normal.style.display = 'none'
+        seconds = 0;
+        minutes = 0;
+        x = 0;
+        y = 0;
+      }
+      input.value = ''
+
+    }
+    function starttime() {
+      
+      let stop = setInterval(() => {
+        seconds++
+        if (seconds == 60) {
+          minutes++
+          seconds = 0;
+        }
+        if (seconds == 10) {
+          y = ''
+        }
+        if (seconds == 60) {
+          y = 0
+        }
+        if (minutes == 10) {
+          x = ''
+        }
+        if (minutes == 60) {
+          x = 0
+        }
+        time.innerText = `${x}${minutes}:${y}${seconds}`
+      }, 1000)
+
+      setTimeout(() => {
+        clearInterval(stop)
+         outerbox.style.background = 'red'
+        normal.style.display = 'block'
+        continues.style.display = 'inline-block'
+      }, intime * 1000)
+    }
+
+  </script>
+</body>
+
+</html>
