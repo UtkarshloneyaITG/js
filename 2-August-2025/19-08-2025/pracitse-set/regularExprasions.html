@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // regular exprations
+
+    // for word
+    {
+      // test 1
+    let test1 = 'Regular'
+    let rex = /.e/
+    rex.test(test1) // output is true (boolean)
+
+    test1 = 'ok';
+    rex = /.o/
+    rex.test(test1) //output is false (because before o thier is no char)
+
+    // test 2
+    let test2 = 'Regular'
+    let rex2 = /u./
+    rex.test(test2) //output is true (boolean)
+
+    test2 = 'ok'
+    rex2 = /k./
+    rex.test(test1) //output is false (because after k thier is no char)
+    }
+    //for numbers 
+    {
+      // test 1 
+      let test1 = 'i am 18+'
+      let rex = /\d/
+      rex.test(test1)
+    }
+  </script>
+</body>
+
+</html>

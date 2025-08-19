@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //Q-1 use regExp and find out is string contains any char except digit or not 
+// input - "62783d" output: "not a valid number"
+// input - "808708789" output : "valid number"
+
+let number = '131231231'
+let rex = /\D/
+
+if(rex.test(number)){
+    console.log('not a valid number')
+}
+else {
+    console.log('valid number' )
+}
+//Q-2 use regExp and find out is username contains lowercase or upercase or digit or underscore 
+// input - "&*^%" output: "username does not contain lowercase uppercase,underscore  and digit "
+// input - "ankit_123" output : "valid username"
+
+let username = 'Tyson_123'
+let rex2 = /\W/
+if(rex2.test(username)){
+    console.log('username does not contain lowercase uppercase,underscore  and digit')
+}
+else{
+    console.log('valid username')
+}
+////Q-3 use regExp and find out is string contains any space char or not 
+// input - "it geeks" output: "yes it contains space char"
+// input - "itgeeks" output : "not it does not contains space char"
+
+let input = 'it geeks'
+
+let rex3 = /\s/
+
+if(rex3.test(input)){
+    console.log("yes it contains space char")
+}
+else{
+    console.log("not it does not contains space char")
+}
+
+////Q-4 use regExp and find out is string start with char 'N' or not 
+// input - "GoodNumber" output: "No it does not start with 'N' char"
+// input - "NumberZero" output : "Yes it does  start with 'N' char"
+
+let input2 = "GoodNumber"
+let rex4 = /^N/
+
+if(rex4.test(input2)){
+    console.log('Yes it does  start with "N" char')
+    
+}
+else{
+     console.log('No it does not start with "N" char')
+}
+
+////Q-5 use regExp and find out is string end with char 'H' or not 
+// input - "GoodNumber" output: "No it does not end with 'H' char"
+// input - "abch" output : "Yes it does end with 'H' char"
+
+
+let input3 = "abch"
+let rex5 = /h$/
+
+if(rex5.test(input3)){
+    console.log("Yes it does end with 'H' char")
+    
+}
+else{
+     console.log("No it does not end with 'H' char")
+}
+  </script>
+</body>
+</html>
