@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    form input {
+      padding: 10px;
+      border-radius: 10px;
+      width: 250px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+      padding: 20px;
+      align-items: center;
+      background-color: white;
+      border: 2px solid black;
+    }
+
+    form>div>p {
+      color: lightgray;
+    }
+
+    button {
+      border-radius: 100px;
+      background: lightblue;
+      padding: 13px 36px;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      height: 600px;
+    }
+
+    form p>span {
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="page_container">
+      <form id="Login">
+        <h1>Login</h1>
+        <div>
+          <label for="userEmail">Email</label>
+          <input type="text" id="userEmail">
+          <p id="userEmailError"></p>
+        </div>
+        <div>
+          <label for="UserPassword">User Password</label>
+          <input type="text" id="UserPassword">
+          <p id="UserPasswordError"></p>
+        </div>
+        <p>Dont have an account ? <a href="index.html">sign_up</a></p>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+  <script>
+
+    let userEmailError = document.getElementById('userEmailError')
+    let UserPasswordError = document.getElementById('UserPasswordError')
+
+    let userinfo_string = localStorage.getItem('Sign_up')
+    let userinfo = JSON.parse(userinfo_string)
+    console.log(userinfo)
+    let login = document.getElementById('Login')
+    let loginemail = document.getElementById('userEmail')
+    let loginpassword = document.getElementById('UserPassword')
+
+
+    login.addEventListener('submit', (e) => {
+      e.preventDefault()
+      let one = false;
+      let two = false
+      if (loginemail.value !== userinfo.email) {
+        userEmailError.innerText = 'Sorry! Please try that again.'
+        userEmailError.style.color = 'red';
+      }
+
+      else {
+        one = true
+         if (loginpassword.value !== userinfo.password) {
+          UserPasswordError.innerText = 'Sorry! Please try that again.'
+          UserPasswordError.style.color = 'red'
+        }
+
+        else two = true
+        userEmailError.style.color = "green";
+        
+      }
+      if (one && two) {
+        alert('Login successfully')
+        
+      }
+    })
+  </script>
+</body>
+
+</html>

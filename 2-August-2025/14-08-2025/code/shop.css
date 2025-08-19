@@ -1,0 +1,28 @@
+*{
+  padding:0;
+  margin: 0;
+  text-decoration: none;
+}
+.shop-card {
+  padding:10px;
+  border: 2px solid black;
+  display: flex;
+  height: 80px;
+  flex-direction: column;
+  gap:20px;
+  text-align: center;
+  border-radius: 10px;
+ 
+}
+.page-width {
+  max-width: 1600px;
+  margin: auto;
+}
+.card-info p>span{
+  padding: 10px;
+}
+.shop-body {
+  display: grid;
+   gap:20px;
+  grid-template-columns: repeat(6,200px);
+}

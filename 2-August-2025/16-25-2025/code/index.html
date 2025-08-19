@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    form input {
+      padding: 10px;
+      border-radius: 10px;
+      width: 250px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+      padding: 20px;
+      align-items: center;
+      background-color: white;
+      border: 2px solid black;
+    }
+
+    form>div>p {
+      color: lightgray;
+    }
+
+    button {
+      border-radius: 100px;
+      background: lightblue;
+      padding: 13px 36px;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .login {
+      display: none;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      height: 600px;
+    }
+
+    form p>span {
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="page_container">
+        <form id="sign_up">
+          <h1>sign up</h1>
+          <div>
+            <label for="name">Name</label>
+            <input type="text" required id="name">
+            <p id="nameError"></p>
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input type="text" required id='email'>
+            <p id="EmailError"></p>
+          </div>
+          <div>
+            <label for="name">Password</label>
+            <input type="text" required id="password">
+            <p id="passwordError"></p>
+          </div>
+          <div>
+            <label for="name">Conform Password</label>
+            <input type="text" required id="conformPassword">
+            <p id="conformPasswordError">...</p>
+          </div>
+          <p>Already have an account ? <a href="login.html">Login</a></p>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+  </div>
+  <script>
+
+    let nameError = document.getElementById('nameError')
+    let EmailError = document.getElementById('EmailError')
+    let passwordError = document.getElementById('passwordError')
+    let conformPasswordError = document.getElementById('conformPasswordError')
+
+    function firstLetterIsWord(str) {
+      if (str[0] >= 'a' && str[0] <= 'z' || str[0] >= 'A' && str[0] <= 'Z') {
+        if (str.length > 2) {
+          return true;
+        }
+      }
+      return false
+    }
+    function emailChacker(email) {
+      for (let x in email) {
+        if (email[0] != '@' && email[1] != '@') {
+          if (email[x] == '@') {
+            if (email[+x + 1] !== undefined) {
+              return true
+            }
+          }
+        }
+      }
+      console.log('email')
+      return false
+    }
+    function passwordChecker(password) {
+      let upc = false;
+      let lpc = false;
+      let num = false
+      if (password.length >= 8) {
+        for (let x of password) {
+          if (x >= 'a' && x <= 'z') lpc = true
+          if (x >= 'A' && x <= 'Z') upc = true
+          if (x >= 0 && x <= 9) num = true
+        }
+      }
+      if (upc && lpc && num) {
+        return true;
+      }
+      return false
+    }
+    function conformPassword(password, conformPass) {
+      return password == conformPass
+    }
+    let userinfo = {
+      name: undefined,
+      email: undefined,
+      password: undefined
+    }
+    let sign_up = document.getElementById('sign_up')
+    let name = document.getElementById('name')
+    let eamil = document.getElementById('eamil')
+    let password = document.getElementById('password')
+    let conformpassword = document.getElementById('conformPassword')
+
+    sign_up.addEventListener('submit', (e) => {
+      e.preventDefault()
+      let first = name.value
+      let second = email.value
+      let third = password.value
+      let fourth = conformpassword.value
+
+      let one = false, two = false, three = false, four = false;
+      if (!firstLetterIsWord(first)) {
+        nameError.innerText = 'Invalid name: Name must be more than 2 characters and cannot start with a number.'
+        nameError.style.color = 'red'
+      }
+      else {
+        one = true
+        nameError.innerText = ''
+      }
+
+      if (!emailChacker(second)) {
+        EmailError.innerText = 'Invalid email: Please enter a valid email address (e.g., you@example.com).'
+        EmailError.style.color = 'red'
+      }
+
+      else {
+        two = true
+        EmailError.innerText = ''
+      }
+      if (!passwordChecker(third)) {
+        passwordError.innerText = 'password must be 8+ with uppercase, lowercase & digit'
+        passwordError.style.color = 'red'
+      }
+      else {
+        three = true
+        passwordError.innerText = ''
+
+
+        if (!conformPassword(third, fourth)) {
+          conformPasswordError.innerText = 'Passwords do not match'
+          conformPasswordError.style.color = 'red'
+        
+        }
+        else {
+          four = true
+          conformPasswordError.innerText = ''
+        }
+      }
+
+      if (one && two && three && four) {
+        userinfo.name = first;
+        userinfo.email = second
+        userinfo.password = third
+        let sign_up_data = JSON.stringify(userinfo)
+        localStorage.setItem('Sign_up', sign_up_data)
+        alert('sign up successfull')
+        window.location.href = 'login.html'
+      }
+    })
+
+
+
+  </script>
+</body>
+
+</html>

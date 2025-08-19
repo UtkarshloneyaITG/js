@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=     , initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #container>div {
+      display: flex;
+      flex-direction: column;
+      height: 350px;
+      text-align: center;
+      border: 2px solid black;
+      justify-content: space-between;
+      background-color: yellow;
+    }
+    #container>div>span {
+      font-size: 20px;
+      color: gray
+    } 
+    #container {
+      display: grid;
+      grid-template-columns: repeat(4, 300px);
+      justify-content: space-between;
+      gap: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+  </div>
+  <script>
+    let x = true;
+    let continer = document.getElementById('container')
+    let arr = []
+    async function products() {
+      try {
+        let response = await fetch('https://dummyjson.com/posts')
+        let apiformate = await response.json()
+        arr = apiformate.posts
+      } catch (error) {
+        console.error(error)
+
+      }
+    }
+
+    async function divcreation() {
+      
+if(x){
+   await products()
+   x = false
+}
+     
+      console.log(arr)
+      continer.innerHTML = ''
+      for (let x = 0; x < arr.length; x++) {
+        let dive = document.createElement('div')
+        dive.innerHTML = `<span>${arr[x].title}</span>
+                          <p>${arr[x].body}</p>
+                        <button onclick='deletePost(${arr[x].id})'>delete</buton>`
+        continer.appendChild(dive);
+      }
+    }
+    function deletePost(del){
+      console.log(del)
+      delete arr[del] 
+      divcreation()
+    }
+    divcreation()
+  </script>
+</body>
+
+</html>

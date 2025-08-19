@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Essence Mascara Lash Princess - Product Detail</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      margin: 0; padding: 0;
+      color: #333;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    }
+    .product-header {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    .product-image {
+      flex: 1 1 300px;
+    }
+    .product-image img {
+      width: 100%;
+      border-radius: 8px;
+      object-fit: contain;
+    }
+    .product-info {
+      flex: 1 1 400px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 28px;
+      color: #222;
+    }
+    .price {
+      font-size: 24px;
+      color: #e53935;
+      font-weight: bold;
+    }
+    .old-price {
+      text-decoration: line-through;
+      color: #999;
+      margin-left: 10px;
+      font-size: 16px;
+    }
+    .availability {
+      font-weight: 600;
+      color: #28a745;
+    }
+    .brand, .category {
+      font-size: 14px;
+      color: #555;
+    }
+    .description {
+      margin: 20px 0;
+      line-height: 1.5;
+    }
+    .dimensions {
+      background: #f4f4f4;
+      padding: 15px;
+      border-radius: 6px;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+    .dimensions strong {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    .buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    button {
+      cursor: pointer;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 5px;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+    .add-cart {
+      background-color: #28a745;
+      color: white;
+    }
+    .add-cart:hover {
+      background-color: #218838;
+    }
+    .buy-now {
+      background-color: #ff5722;
+      color: white;
+    }
+    .buy-now:hover {
+      background-color: #e64a19;
+    }
+    .back-btn {
+      background-color: #777;
+      color: white;
+    }
+    .back-btn:hover {
+      background-color: #555;
+    }
+    .meta-info {
+      font-size: 13px;
+      color: #666;
+      margin-top: 10px;
+    }
+    .reviews {
+      margin-top: 30px;
+    }
+    .reviews h3 {
+      margin-bottom: 15px;
+    }
+    .review-item {
+      border-top: 1px solid #ddd;
+      padding: 10px 0;
+    }
+    .review-item:first-child {
+      border-top: none;
+    }
+    .reviewer {
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .review-rating {
+      color: #fbc02d;
+      margin-left: 8px;
+    }
+    .review-comment {
+      margin: 6px 0 0 0;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    
+  </div>
+ 
+<script src="data.js"></script>
+<script>
+  const useParams = new URLSearchParams(window.location.search)
+  const id = useParams.get("id");
+  const container = document.querySelector(".container");
+
+  async function loadDetailPage() {
+    await data();
+    const product = products.find((p) => p.id === Number.parseInt(id));
+
+   container.innerHTML = `
+      <div class="product-header">
+      <div class="product-image">
+        <img src="${product.thumbnail}" alt="Essence Mascara Lash Princess" />
+      </div>
+
+      <div class="product-info">
+        <h1>${product.title}</h1>
+        <div>
+          <span class="price">${(product.price * (product.discountPercentage/100)).toFixed(2)}</span>
+          <span class="old-price">${product.price}</span> <!-- price with discount applied: 9.99/(1-0.1048)≈11.15 -->
+        </div>
+        <div class="availability">Availability: In Stock (${product.stock})</div>
+        <div class="brand">Brand: Essence</div>
+        <div class="category">Category: Beauty</div>
+        <div class="description">
+          The Essence Mascara Lash Princess is a popular mascara known for its volumizing and lengthening effects. Achieve dramatic lashes with this long-lasting and cruelty-free formula.
+        </div>
+
+        <div class="dimensions">
+          <strong>Dimensions (cm):</strong>
+          Depth: ${product.dimensions.depth}<br />
+          Height: ${product.dimensions.height}<br />
+          Width: ${product.dimensions.width}
+        </div>
+
+        <div class="meta-info">
+          <div><strong>SKU:</strong>${product.sku}</div>
+          <div><strong>Weight:</strong> ${product.weight} g</div>
+          <div><strong>Minimum Order Quantity:</strong> 48</div>
+          <div><strong>Discount:</strong> 10.48%</div>
+          <div><strong>Shipping:</strong> Ships in 3-5 business days</div>
+          <div><strong>Warranty:</strong> 1 week warranty</div>
+          <div><strong>Return Policy:</strong> No return policy</div>
+        </div>
+
+        <div class="buttons">
+          <button class="add-cart" onclick='add_to_cart(${product.id})'>Add to Cart</button>
+          <button class="buy-now">Buy Now</button>
+          <button class="back-btn" onclick="history.back()">Back to Products</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="reviews">
+      <h3>Reviews</h3>
+
+      <div class="review-item">
+        <div><span class="reviewer">Eleanor Collins</span> 
+          <span class="review-rating">⭐️⭐️⭐️</span>
+        </div>
+        <div class="review-comment">Would not recommend!</div>
+      </div>
+
+      <div class="review-item">
+        <div><span class="reviewer">Lucas Gordon</span> 
+          <span class="review-rating">⭐️⭐️⭐️⭐️</span>
+        </div>
+        <div class="review-comment">Very satisfied!</div>
+      </div>
+
+      <div class="review-item">
+        <div><span class="reviewer">Eleanor Collins</span> 
+          <span class="review-rating">⭐️⭐️⭐️⭐️⭐️</span>
+        </div>
+        <div class="review-comment">Highly impressed!</div>
+      </div>
+    </div>
+
+   ` 
+  } 
+
+  loadDetailPage()
+
+</script>
+</body>
+</body>
+</html>

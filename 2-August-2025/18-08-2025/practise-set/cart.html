@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Shopping Cart</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f9f9f9;
+    margin: 0; padding: 0;
+    color: #333;
+  }
+  header {
+    background: #333;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+  }
+  .cart-container {
+    max-width: 900px;
+    margin: 30px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+  }
+  h2 {
+    margin-bottom: 20px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 25px;
+  }
+  th, td {
+    text-align: left;
+    padding: 12px 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  th {
+    background: #f4f4f4;
+  }
+  .product-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  .product-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  input[type="number"] {
+    width: 60px;
+    padding: 5px;
+    font-size: 16px;
+  }
+  button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  .update-btn {
+    background-color: #007bff;
+    color: white;
+  }
+  .update-btn:hover {
+    background-color: #0056b3;
+  }
+  .remove-btn {
+    background-color: #dc3545;
+    color: white;
+  }
+  .remove-btn:hover {
+    background-color: #a71d2a;
+  }
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .continue-btn {
+    background-color: #6c757d;
+    color: white;
+  }
+  .continue-btn:hover {
+    background-color: #565e64;
+  }
+  .checkout-btn {
+    background-color: #28a745;
+    color: white;
+  }
+  .checkout-btn:hover {
+    background-color: #218838;
+  }
+  .total-section {
+    text-align: right;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 25px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Your Shopping Cart</h1>
+</header>
+
+<div class="cart-container">
+
+  <h2>Cart Items</h2>
+
+  <form id="cart-form">
+    <table>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="product-info">
+              <img src="https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/1.webp" alt="Essence Mascara Lash Princess" class="product-image" />
+              <span>Essence Mascara Lash Princess</span>
+            </div>
+          </td>
+          <td>$9.99</td>
+          <td><input type="number" name="quantity1" min="1" value="1" /></td>
+          <td>$19.98</td>
+          <td onclick="this.parentElement.remove();"><button type="button" class="remove-btn">Remove</button></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="product-info">
+              <img src="https://via.placeholder.com/60" alt="Another Product" class="product-image" />
+              <span>Sample Product 2</span>
+            </div>
+          </td>
+          <td>$15.00</td>
+          <td><input type="number" name="quantity2" min="1" value="1" /></td>
+          <td>$15.00</td>
+          <td><button type="button" class="remove-btn">Remove</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="actions">
+      <button type="submit" class="update-btn">Update Cart</button>
+      <button type="button" class="continue-btn" onclick="window.location.href='index.html'">Continue Shopping</button>
+      <button type="button" class="checkout-btn" onclick="alert('Proceeding to checkout...')">Proceed to Checkout</button>
+    </div>
+  </form>
+
+  <div class="total-section">
+    Total: $34.98
+  </div>
+
+</div>
+<script src="data.js"></script>
+<script>
+  function createProductInCart(){
+
+  }
+</script>
+</body>
+</html>
