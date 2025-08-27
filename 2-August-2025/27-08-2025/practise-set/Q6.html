@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // Merge two objects into one using Object.assign().
+
+    let obj1 = {
+      name : 'tyson',
+      age : 16,
+      salary : 30000,
+      proffesion :' bay-blading'
+    }
+    let objEdited = {
+      age: 17,
+      salary : 50000,
+      title : 'world Champion'
+    }
+    Object.assign(obj1,objEdited)
+    console.log(obj1)
+  </script>
+</body>
+</html>

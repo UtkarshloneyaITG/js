@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // Convert an array of key-value pairs back into an object using Object.fromEntries().
+    let obj = {
+      name: 'aluu',
+      age: '3 din',
+      birth_place: 'khet'
+    }
+
+    let res = Object.entries(obj)
+    let res2 = Object.fromEntries(res)
+    console.log(res2)
+  </script>
+</body>
+
+</html>

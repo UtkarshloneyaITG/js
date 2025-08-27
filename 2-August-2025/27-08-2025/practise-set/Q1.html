@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function ObjectLength(obj){
+      return Object.keys(obj).length
+    }
+    let obj = {
+      name : 'aluu',
+      age : '3 din',
+      birth_place : 'khet' 
+    }
+    let res = ObjectLength(obj)
+    console.log(res)
+
+    Object.prototype.length = ()=>{
+       return Object.keys(obj).length
+    }
+    console.log(obj.length())
+  </script>
+</body>
+</html>

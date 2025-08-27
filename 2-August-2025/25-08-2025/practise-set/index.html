@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <p>gsdg</p>
+  <p>gsdg</p>
+  <p>gsdg</p>
+  <p>gsdg</p>
+  <p>gsdg</p>
+  <p>gsdg</p>
+  <script>
+    let arr = localStorage.getItem('values')
+    console.log(arr)
+    let x = arr[0];
+    let y = arr[1]
+    let z = arr[2]
+    
+    function one() {
+      
+      document.getElementsByTagName('p')[1].innerText = x++
+      requestAnimationFrame(one)
+    }
+    one()
+setInterval(()=>{
+  document.getElementsByTagName('p')[0].innerText = y++
+},0)
+setInterval(()=>{
+  document.getElementsByTagName('p')[2].innerText = z++
+},1000/59.79)
+
+  localStorage.setItem('values', [JSON.stringify(x = 100000),JSON.stringify(y = 100000000),JSON.stringify(z = 1000000)])
+
+
+  </script>
+</body>
+
+</html>
