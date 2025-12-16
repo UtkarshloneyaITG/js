@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    div {
+      padding: 40px 60px 60px 60px;
+      border: 2px solid black;
+      width: fit-content;
+      background-color: rgb(51, 51, 51);
+      color: yellow;
+      font-size: 20px;
+    }
+
+    div>div {
+      background: rgb(77, 76, 76);
+    }
+
+    div>div>div {
+      background-color: rgb(122, 122, 122);
+    }
+
+    div>div>div>div {
+      background-color: rgb(187, 187, 187);
+    }
+
+    .output {
+      width: 200px;
+      height: 200px;
+      background-color: black;
+      margin: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="grand-grand-father">
+    grand-grand-father
+    <div id="grand-father">
+      grand-father
+      <div id="father">
+        father
+        <div id="children">
+          children
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="output">
+
+  </div>
+  <script>
+    const grand_grand_father = document.getElementById('grand-grand-father')
+    const grand_father = document.getElementById('grand-father')
+    const father = document.getElementById('father')
+    const children = document.getElementById('children')
+  </script>
+</body>
+
+</html>

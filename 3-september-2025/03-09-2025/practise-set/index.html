@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+
+    body {
+      border: 1px solid black;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    div {
+      padding: 1px;
+      border: 1px solid black;
+      width: fit-content;
+    }
+  </style>
+</head>
+
+<body>
+  <div></div>
+  <script>
+    let divs = document.getElementsByTagName('div')
+    for (let x = 0; x < 100000; x++) {
+      let div = document.createElement('div')
+      document.body.appendChild(div)
+    }
+    Array.from(divs).forEach((element, index) => {
+      element.addEventListener('mouseenter', () => {
+        element.style.background = 'black'
+      })
+    })
+  </script>
+</body>
+
+</html>

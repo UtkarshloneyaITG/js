@@ -54,90 +54,91 @@
     form p>span {
       cursor: pointer;
     }
+
+    /* HTML: <div class="loader"></div> */
+    .loader {
+      width: 100px;
+      height: 60px;
+      display: none;
+      animation: l12-0 2s infinite linear;
+    }
+
+    .loader::before,
+    .loader::after {
+      content: "";
+      flex: 4;
+      background:
+        radial-gradient(at 50% 20%, #0000, #000a) bottom left/20px 20px repeat-x,
+        linear-gradient(red 0 0) bottom/100% 20px no-repeat #ddd;
+      -webkit-mask:
+        repeating-linear-gradient(90deg, #000 0 4px, #0000 0 20px) 8px 0,
+        radial-gradient(farthest-side, #000 90%, #0000) left bottom/20px 20px repeat-x;
+    }
+
+    .loader::after {
+      flex: 1;
+      transform-origin: top;
+      animation: l12-1 1s cubic-bezier(0, 20, 1, 20) infinite;
+    }
+
+    @keyframes l12-0 {
+
+      0%,
+      49.9% {
+        transform: scaleX(1)
+      }
+
+      50%,
+      100% {
+        transform: scaleX(-1)
+      }
+    }
+
+    @keyframes l12-1 {
+      100% {
+        transform: rotate(-2deg)
+      }
+    }
   </style>
 </head>
 
 <body>
   <div class="container">
     <div class="page_container">
-        <form id="sign_up">
-          <h1>sign up</h1>
-          <div>
-            <label for="name">Name</label>
-            <input type="text" required id="name">
-            <p id="nameError"></p>
-          </div>
-          <div>
-            <label for="email">Email</label>
-            <input type="text" required id='email'>
-            <p id="EmailError"></p>
-          </div>
-          <div>
-            <label for="name">Password</label>
-            <input type="text" required id="password">
-            <p id="passwordError"></p>
-          </div>
-          <div>
-            <label for="name">Conform Password</label>
-            <input type="text" required id="conformPassword">
-            <p id="conformPasswordError">...</p>
-          </div>
-          <p>Already have an account ? <a href="login.html">Login</a></p>
-            <button type="submit">Submit</button>
-        </form>
+      <form id="sign_up">
+        <h1>sign up</h1>
+        <div>
+          <label for="name">Name</label>
+          <input type="text" required id="name">
+          <p id="nameError"></p>
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" required id='email'>
+          <p id="EmailError"></p>
+        </div>
+        <div>
+          <label for="name">Password</label>
+          <input type="password" required id="password">
+          <p id="passwordError"></p>
+        </div>
+        <p>Already have an account ? <a href="login.html">Login</a></p>
+        <button type="submit">Submit</button>
+      </form>
+      <div class="loader"></div>
     </div>
   </div>
   <script>
-
+    let loader = document.querySelector('.loader')
     let nameError = document.getElementById('nameError')
     let EmailError = document.getElementById('EmailError')
     let passwordError = document.getElementById('passwordError')
     let conformPasswordError = document.getElementById('conformPasswordError')
 
-    function firstLetterIsWord(str) {
-      if (str[0] >= 'a' && str[0] <= 'z' || str[0] >= 'A' && str[0] <= 'Z') {
-        if (str.length > 2) {
-          return true;
-        }
-      }
-      return false
-    }
-    function emailChacker(email) {
-      for (let x in email) {
-        if (email[0] != '@' && email[1] != '@') {
-          if (email[x] == '@') {
-            if (email[+x + 1] !== undefined) {
-              return true
-            }
-          }
-        }
-      }
-      console.log('email')
-      return false
-    }
-    function passwordChecker(password) {
-      let upc = false;
-      let lpc = false;
-      let num = false
-      if (password.length >= 8) {
-        for (let x of password) {
-          if (x >= 'a' && x <= 'z') lpc = true
-          if (x >= 'A' && x <= 'Z') upc = true
-          if (x >= 0 && x <= 9) num = true
-        }
-      }
-      if (upc && lpc && num) {
-        return true;
-      }
-      return false
-    }
-    function conformPassword(password, conformPass) {
-      return password == conformPass
-    }
     let userinfo = {
-      name: undefined,
-      email: undefined,
-      password: undefined
+      Name: undefined,
+      Email: undefined,
+      Password: undefined
     }
     let sign_up = document.getElementById('sign_up')
     let name = document.getElementById('name')
@@ -145,62 +146,53 @@
     let password = document.getElementById('password')
     let conformpassword = document.getElementById('conformPassword')
 
+
+    async function sign_up_now(data) {
+      console.log('api_called')
+      try {
+        loader.style.display = 'flex'
+        let response = await fetch('https://ewl-server.vercel.app/api/v1/Auth/Signup', data)
+        let ans = await response.json()
+        loader.style.display = 'none'
+        return ans
+      } catch (error) {
+        console.log('error')
+      }
+    }
+
     sign_up.addEventListener('submit', (e) => {
       e.preventDefault()
       let first = name.value
       let second = email.value
       let third = password.value
-      let fourth = conformpassword.value
-
-      let one = false, two = false, three = false, four = false;
-      if (!firstLetterIsWord(first)) {
-        nameError.innerText = 'Invalid name: Name must be more than 2 characters and cannot start with a number.'
-        nameError.style.color = 'red'
+      checking(first, second, third)
+    })
+    async function checking(first, second, third) {
+      userinfo.Name = first;
+      userinfo.Email = second
+      userinfo.Password = third
+      let option = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userinfo)
       }
-      else {
-        one = true
-        nameError.innerText = ''
-      }
+      console.log(userinfo)
+      await sign_up_now(option).then((value) => {
+        console.log(value)
+        if (value.success = false) {
 
-      if (!emailChacker(second)) {
-        EmailError.innerText = 'Invalid email: Please enter a valid email address (e.g., you@example.com).'
-        EmailError.style.color = 'red'
-      }
-
-      else {
-        two = true
-        EmailError.innerText = ''
-      }
-      if (!passwordChecker(third)) {
-        passwordError.innerText = 'password must be 8+ with uppercase, lowercase & digit'
-        passwordError.style.color = 'red'
-      }
-      else {
-        three = true
-        passwordError.innerText = ''
-
-
-        if (!conformPassword(third, fourth)) {
-          conformPasswordError.innerText = 'Passwords do not match'
-          conformPasswordError.style.color = 'red'
-        
+          window.location.href = '/2-August-2025/16-25-2025/code/login.html'
         }
         else {
-          four = true
-          conformPasswordError.innerText = ''
+          alert(value.msg)
         }
-      }
+      }).catch(() => {
+        console.log('something went wrong')
+      })
 
-      if (one && two && three && four) {
-        userinfo.name = first;
-        userinfo.email = second
-        userinfo.password = third
-        let sign_up_data = JSON.stringify(userinfo)
-        localStorage.setItem('Sign_up', sign_up_data)
-        alert('sign up successfull')
-        window.location.href = 'login.html'
-      }
-    })
+    }
 
 
 
